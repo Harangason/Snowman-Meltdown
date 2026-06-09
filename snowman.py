@@ -43,13 +43,21 @@ def play_game():
     while True:
         try:
             # For now, simply prompt the user once:
-            guess = input("Guess a letter: ").lower()
+            guess = input("Guess a letter: ").strip().lower()
             print("You guessed:", guess)
-            if guess in secret_word:
-                for line in data["snowman"]:
-                    print(line)
+            if guess in secret_word.lower():
+                lines_reduce = data["snowman"]
+                i = 0
+                max_length = len(lines_reduce)
+                # Eine while-Schleife statt 'for', um die Zeilen nacheinander zu drucken
+                while i < max_length - 1:
+                    print(f"\n{data["snowman"][i]}")
+                    i += 1
             else:
                 print("Incorrect guess. Try again.")
+                continue
+        except ValueError:
+            print("Invalid input. Please enter a single letter.")
 
 
 
