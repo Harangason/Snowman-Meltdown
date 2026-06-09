@@ -5,7 +5,7 @@ import os
 
 
 WORDS = ["python", "git", "github", "snowman", "meltdown"]
-underscores = ['_', '_', '_', '_', '_']
+
 new_underscores = ""
 
 def get_random_word():
@@ -43,35 +43,36 @@ def play_game():
     reduse_counter = 1
     i = 0
     underscore_counter = 1
+    underscores = ['_'] * len(secret_word)
     while True:
         try:
             # For now, simply prompt the user once:
             guess = input("Guess a letter: ").strip().lower()
             print("You guessed:", guess)
         except ValueError:
-        print("Invalid input. Please enter a single letter.")
+            print("Invalid input. Please enter a single letter.")
 
-            if guess in secret_word.lower():
-                lines_reduce = data["snowman"]
+        if guess in secret_word.lower():
+            lines_reduce = data["snowman"]
 
-                max_length = len(lines_reduce)
-                # Eine while-Schleife statt 'for', um die Zeilen nacheinander zu drucken
-                while i < max_length - reduse_counter:
-                    print(f"{data["snowman"][i]}")
-                    i += 1
-                for index, char in enumerate(secret_word):
-                    if char == guess:
-                        underscores[index] = guess
+            max_length = len(lines_reduce)
+            # Eine while-Schleife statt 'for', um die Zeilen nacheinander zu drucken
+            while i < max_length - reduse_counter:
+                print(f"{data["snowman"][i]}")
+                i += 1
+            for index, char in enumerate(secret_word):
+                if char == guess:
+                    underscores[index] = guess
 
-                reduse_counter += 1
-            else:
-                print("Incorrect guess. Try again.")
-                continue
-            print(f"{underscores}")
-            '''underscores += underscores.replace('_', guess, underscore_counter)
-            #underscore = ' _ ' * (5 - underscore_counter)
-            print(f"Word: {underscores}")
-            underscore_counter += 1'''
+            reduse_counter += 1
+        else:
+            print("Incorrect guess. Try again.")
+            continue
+        print(f"{underscores}")
+        '''underscores += underscores.replace('_', guess, underscore_counter)
+        #underscore = ' _ ' * (5 - underscore_counter)
+        print(f"Word: {underscores}")
+        underscore_counter += 1'''
 
 
 
