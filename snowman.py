@@ -32,7 +32,7 @@ def play_game():
             print("snowman is not a list.")
         else:
             print("snowman is a list.")
-            break
+
     except FileNotFoundError:
         print(("snowman.json not found."))
 
@@ -40,11 +40,17 @@ def play_game():
     for line in data["snowman"]:
         print(line)
 
+    while True:
+        try:
+            # For now, simply prompt the user once:
+            guess = input("Guess a letter: ").lower()
+            print("You guessed:", guess)
+            if guess in secret_word:
+                for line in data["snowman"]:
+                    print(line)
+            else:
+                print("Incorrect guess. Try again.")
 
-
-    # For now, simply prompt the user once:
-    guess = input("Guess a letter: ").lower()
-    print("You guessed:", guess)
 
 
 if __name__ == "__main__":
