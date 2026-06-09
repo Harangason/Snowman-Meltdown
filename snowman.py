@@ -39,7 +39,7 @@ def play_game():
     # Den Schneemann aus der Liste Zeile für Zeile ausgeben
     for line in data["snowman"]:
         print(line)
-
+    reduse_counter = 0
     while True:
         try:
             # For now, simply prompt the user once:
@@ -50,9 +50,10 @@ def play_game():
                 i = 0
                 max_length = len(lines_reduce)
                 # Eine while-Schleife statt 'for', um die Zeilen nacheinander zu drucken
-                while i < max_length - 1:
-                    print(f"\n{data["snowman"][i]}")
+                while i < max_length - reduse_counter:
+                    print(f"{data["snowman"][i]}")
                     i += 1
+                    reduse_counter += 1
             else:
                 print("Incorrect guess. Try again.")
                 continue
