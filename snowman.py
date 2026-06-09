@@ -39,7 +39,8 @@ def play_game():
     # Den Schneemann aus der Liste Zeile für Zeile ausgeben
     for line in data["snowman"]:
         print(line)
-    reduse_counter = 0
+    reduse_counter = 1
+    underscore_counter = 0
     while True:
         try:
             # For now, simply prompt the user once:
@@ -53,10 +54,12 @@ def play_game():
                 while i < max_length - reduse_counter:
                     print(f"{data["snowman"][i]}")
                     i += 1
-                    reduse_counter += 1
             else:
                 print("Incorrect guess. Try again.")
                 continue
+            underscore = ' _ ' * (5 - underscore_counter)
+            print(f"Word: {guess} {underscore}")
+            underscore_counter += 1
         except ValueError:
             print("Invalid input. Please enter a single letter.")
 
