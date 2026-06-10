@@ -52,6 +52,9 @@ def get_guess():
 
 def game_struct(secret_word, snowman_lines, max_fehler, fehler_counter, underscores):
     # 3. Die Hauptschleife(Game Loop)
+    max_mistakes = len(snowman_lines)  # Anzahl der Zeilen bestimmt die maximalen Fehlversuche
+    mistakes = 0  # Wie viele Teile des Schneemanns schon geschmolzen sind
+    underscores = ['_'] * len(secret_word)
     while True:
         # Aktuellen Zustand des Schneemanns zeichnen (schmilzt von unten nach oben)
         print("\n" + "=" * 30)
