@@ -37,6 +37,16 @@ def snowman_meltdown():
         print(line)
     return data["snowman"]
 
+def get_guess():
+    # Eingabe vom Spieler holen
+    guess = input("\nGuess a letter: ").strip().lower()
+
+    # Validierung: Eingabe darf nicht leer sein und sollte nur 1 Buchstabe sein
+    if not guess or len(guess) != 1 or not guess.isalpha():
+        print("Ungültige Eingabe. Bitte gib genau einen Buchstaben ein.")
+        continue
+    return guess
+
 def play_game():
     secret_word = get_random_word()
     print("Welcome to Snowman Meltdown!")
