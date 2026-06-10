@@ -85,7 +85,9 @@ def play_game():
                     if char == guess:
                         underscores[index] = secret_word[index]  # Behält Groß-/Kleinschreibung des Originals bei
 
-
+            else:
+                print(f"Falsch! '{guess}' ist nicht im Wort.")
+                fehler_counter += 1  # Schneemann schmilzt um eine Zeile
 
 if __name__ == "__main__":
     play_game()
