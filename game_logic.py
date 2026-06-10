@@ -78,12 +78,13 @@ def play_game():
 
     # Bleibt strikt eine Liste für die Zuweisung über den Index!
     # 2. Spielvariablen initialisieren
-    snowman_lines = snowman_meltdown.get_snowman_meltdown()
-
-    for line in snowman_lines:
-        print(line)
-
-    game_struct(secret_word, snowman_lines)
+    while True:
+        secret_word = get_random_word()
+        snowman_lines = snowman_meltdown.get_snowman_meltdown()
+        for line in snowman_lines:
+            print(line)
+        # Spielrunde starten
+        game_struct(secret_word, snowman_lines)
 
 
 if __name__ == "__main__":
