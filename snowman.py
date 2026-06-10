@@ -59,10 +59,11 @@ def play_game():
             # Aktuellen Wort-Fortschritt anzeigen (NUR beim Printen als String zusammenfügen)
             print("\nWort: " + " ".join(underscores))
 
-            # Prüfen, ob das Spiel gewonnen wurde
-            if "_" not in underscores:
-                print("\nGlückwunsch! Du hast das Wort erraten und den Schneemann gerettet!")
-                break
+        # Prüfen, ob das Spiel gewonnen wurde
+        if "_" not in underscores:
+            input("Press Enter to continue...")
+            print("\nGlückwunsch! Du hast das Wort erraten und den Schneemann gerettet!")
+            break
 
             # Prüfen, ob der Schneemann komplett geschmolzen ist
             if fehler_counter >= max_fehler:
