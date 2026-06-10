@@ -46,8 +46,8 @@ def play_game():
     max_fehler = len(snowman_lines)  # Anzahl der Zeilen bestimmt die maximalen Fehlversuche
     fehler_counter = 0  # Wie viele Teile des Schneemanns schon geschmolzen sind
     reduse_counter = 1
-    i = 0
-    underscore_counter = 1
+
+    # Bleibt strikt eine Liste für die Zuweisung über den Index!
     underscores = ['_'] * len(secret_word)
     while True:
         try:
