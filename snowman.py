@@ -67,7 +67,7 @@ def game_struct(secret_word, snowman_lines, max_fehler, fehler_counter, undersco
             break
 
         # Prüfen, ob der Schneemann komplett geschmolzen ist
-        if fehler_counter >= max_fehler:
+        if check_game_over(mistakes, max_mistakes):
             print(f"\nGame Over! Der Schneemann ist geschmolzen. Das Wort war: {secret_word}")
             break
 
