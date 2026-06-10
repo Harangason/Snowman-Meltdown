@@ -69,15 +69,14 @@ def play_game():
                 print(f"\nGame Over! Der Schneemann ist geschmolzen. Das Wort war: {secret_word}")
                 break
 
-            reduse_counter += 1
-        else:
-            print("Incorrect guess. Try again.")
-            continue
-        print(f"{underscores}")
-        '''underscores += underscores.replace('_', guess, underscore_counter)
-        #underscore = ' _ ' * (5 - underscore_counter)
-        print(f"Word: {underscores}")
-        underscore_counter += 1'''
+            # Eingabe vom Spieler holen
+            guess = input("\nGuess a letter: ").strip().lower()
+
+            # Validierung: Eingabe darf nicht leer sein und sollte nur 1 Buchstabe sein
+            if not guess or len(guess) != 1 or not guess.isalpha():
+                print("Ungültige Eingabe. Bitte gib genau einen Buchstaben ein.")
+                continue
+
 
 
 
