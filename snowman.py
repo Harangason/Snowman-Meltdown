@@ -56,8 +56,13 @@ def play_game():
         for i in range(aktuelle_zeilen):
             print(snowman_lines[i])
 
-        if guess in secret_word.lower():
-            lines_reduce = data["snowman"]
+            # Aktuellen Wort-Fortschritt anzeigen (NUR beim Printen als String zusammenfügen)
+            print("\nWort: " + " ".join(underscores))
+
+            # Prüfen, ob das Spiel gewonnen wurde
+            if "_" not in underscores:
+                print("\nGlückwunsch! Du hast das Wort erraten und den Schneemann gerettet!")
+                break
 
             max_length = len(lines_reduce)
             # Eine while-Schleife statt 'for', um die Zeilen nacheinander zu drucken
