@@ -50,6 +50,43 @@ def get_guess():
             break
     return guess
 
+def game_struct(secret_word, snowman_lines, max_fehler, fehler_counter, underscores):
+    # 3. Die Hauptschleife(Game Loop)
+    while True:
+        # Aktuellen Zustand des Schneemanns zeichnen (schmilzt von unten nach oben)
+        print("\n" + "=" * 30)
+        aktuelle_zeilen = max_fehler - fehler_counter
+        for i in range(aktuelle_zeilen):
+            print(snowman_lines[i])
+
+        # Aktuellen Wort-Fortschritt anzeigen (NUR beim Printen als String zusammenfügen)
+        print("\nWort: " + " ".join(underscores))
+
+        # Prüfen, ob das Spiel gewonnen wurde
+        if "_" not in underscores:
+            print("\nGlückwunsch! Du hast das Wort erraten und den Schneemann gerettet!")
+            break
+
+        # Prüfen, ob der Schneemann komplett geschmolzen ist
+        if fehler_counter >= max_fehler:
+            print(f"\nGame Over! Der Schneemann ist geschmolzen. Das Wort war: {secret_word}")
+            break
+
+        guess = get_guess()
+
+        # Prüfen, ob der Buchstabe im Wort ist
+        if guess in secret_word.lower():
+            print(f"Richtig! '{guess}' ist im Wort.")
+            # ALLE Vorkommen des Buchstabens aufdecken (KEIN break!)
+            for index, char in enumerate(secret_word.lower()):
+                if char == guess:
+                    underscores[index] = secret_word[index]  # Behält Groß-/Kleinschreibung des Originals bei
+
+        else:
+            print(f"Falsch! '{guess}' ist nicht im Wort.")
+            fehler_counter += 1  # Schneemann schmilzt um eine Zeile
+    return
+
 def play_game():
     secret_word = get_random_word()
     print("Welcome to Snowman Meltdown!")
