@@ -116,7 +116,7 @@ def play_game():
         print(line)
 
     # 2. Spielvariablen initialisieren
-    snowman_lines = data["snowman"]
+    snowman_lines = snowman_meltdown()
     max_fehler = len(snowman_lines)  # Anzahl der Zeilen bestimmt die maximalen Fehlversuche
     fehler_counter = 0  # Wie viele Teile des Schneemanns schon geschmolzen sind
     reduse_counter = 1
