@@ -1,6 +1,8 @@
 import random
 import get_user_input as get_guess
 import ascii_art as snowman_meltdown
+import sys
+import time
 
 
 WORDS = ["python", "git", "github", "snowman", "meltdown"]
@@ -48,6 +50,7 @@ def game_struct(secret_word, snowman_lines):
         else:
             print(f"Falsch! '{guess}' ist nicht im Wort.")
             mistakes += 1  # Schneemann schmilzt um eine Zeile
+
     return
 
 def check_mistake(mistakes, max_mistakes):
@@ -81,6 +84,7 @@ def wait_for_exit():
         sys.exit(0)
 
 def play_game():
+
     secret_word = get_random_word()
     print("Welcome to Snowman Meltdown!")
     print("Secret word selected: " + secret_word)  # for testing, later remove this line
@@ -96,6 +100,12 @@ def play_game():
         # Spielrunde starten
         game_struct(secret_word, snowman_lines)
 
+        # Fragen, ob noch eine Runde gespielt werden soll
+        if not play_game_again():
+            break  # Schleife verlassen, wenn der User "n" drückt
+
+        # Erst wenn der Spieler nicht mehr spielen will, wartet das Skript auf den Exit
+    wait_for_exit()
 
 if __name__ == "__main__":
     play_game()
