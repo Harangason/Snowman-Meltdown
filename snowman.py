@@ -50,12 +50,11 @@ def play_game():
     # Bleibt strikt eine Liste für die Zuweisung über den Index!
     underscores = ['_'] * len(secret_word)
     while True:
-        try:
-            # For now, simply prompt the user once:
-            guess = input("Guess a letter: ").strip().lower()
-            print("You guessed:", guess)
-        except ValueError:
-            print("Invalid input. Please enter a single letter.")
+        # Aktuellen Zustand des Schneemanns zeichnen (schmilzt von unten nach oben)
+        print("\n" + "=" * 30)
+        aktuelle_zeilen = max_fehler - fehler_counter
+        for i in range(aktuelle_zeilen):
+            print(snowman_lines[i])
 
         if guess in secret_word.lower():
             lines_reduce = data["snowman"]
