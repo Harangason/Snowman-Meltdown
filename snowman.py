@@ -56,11 +56,7 @@ def game_struct(secret_word, snowman_lines, max_fehler, fehler_counter, undersco
     mistakes = 0  # Wie viele Teile des Schneemanns schon geschmolzen sind
     underscores = ['_'] * len(secret_word)
     while True:
-        # Aktuellen Zustand des Schneemanns zeichnen (schmilzt von unten nach oben)
-        print("\n" + "=" * 30)
-        aktuelle_zeilen = max_fehler - fehler_counter
-        for i in range(aktuelle_zeilen):
-            print(snowman_lines[i])
+        display_game_state(mistakes, max_mistakes, snowman_lines)
 
         # Aktuellen Wort-Fortschritt anzeigen (NUR beim Printen als String zusammenfügen)
         print("\nWort: " + " ".join(underscores))
