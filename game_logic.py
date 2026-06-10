@@ -67,6 +67,8 @@ def display_game_state(mistakes, max_mistakes, snowman_lines):
         print(snowman_lines[i])
     return
 
+def play_game_again():
+    return input("Do you want to play again? (y/n): ").lower().strip() == "y"
 
 def play_game():
     secret_word = get_random_word()
