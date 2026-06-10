@@ -62,7 +62,7 @@ def game_struct(secret_word, snowman_lines, max_fehler, fehler_counter, undersco
         print("\nWort: " + " ".join(underscores))
 
         # Prüfen, ob das Spiel gewonnen wurde
-        if "_" not in underscores:
+        if check_win(underscores):
             print("\nGlückwunsch! Du hast das Wort erraten und den Schneemann gerettet!")
             break
 
