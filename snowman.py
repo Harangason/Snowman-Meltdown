@@ -87,6 +87,15 @@ def game_struct(secret_word, snowman_lines, max_fehler, fehler_counter, undersco
             fehler_counter += 1  # Schneemann schmilzt um eine Zeile
     return
 
+def display_game_state(mistakes, max_mistakes, snowman_lines):
+    # Aktuellen Zustand des Schneemanns zeichnen (schmilzt von unten nach oben)
+    print("\n" + "=" * 30)
+    aktuelle_zeilen = max_mistakes - mistakes
+    for i in range(aktuelle_zeilen):
+        print(snowman_lines[i])
+    return
+
+
 def play_game():
     secret_word = get_random_word()
     print("Welcome to Snowman Meltdown!")
