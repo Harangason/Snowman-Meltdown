@@ -70,6 +70,16 @@ def display_game_state(mistakes, max_mistakes, snowman_lines):
 def play_game_again():
     return input("Do you want to play again? (y/n): ").lower().strip() == "y"
 
+def wait_for_exit():
+    print("Press Ctrl+C to exit.")
+    try:
+        # Hält das Skript aktiv, bis der Benutzer Strg+C drückt
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("\nSkript erfolgreich beendet.")
+        sys.exit(0)
+
 def play_game():
     secret_word = get_random_word()
     print("Welcome to Snowman Meltdown!")
