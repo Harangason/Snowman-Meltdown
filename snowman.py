@@ -123,46 +123,7 @@ def play_game():
 
     # Bleibt strikt eine Liste für die Zuweisung über den Index!
     underscores = ['_'] * len(secret_word)
-    while True:
-        # Aktuellen Zustand des Schneemanns zeichnen (schmilzt von unten nach oben)
-        print("\n" + "=" * 30)
-        aktuelle_zeilen = max_fehler - fehler_counter
-        for i in range(aktuelle_zeilen):
-            print(snowman_lines[i])
-
-            # Aktuellen Wort-Fortschritt anzeigen (NUR beim Printen als String zusammenfügen)
-            print("\nWort: " + " ".join(underscores))
-
-        # Prüfen, ob das Spiel gewonnen wurde
-        if "_" not in underscores:
-            input("Press Enter to continue...")
-            print("\nGlückwunsch! Du hast das Wort erraten und den Schneemann gerettet!")
-            break
-
-            # Prüfen, ob der Schneemann komplett geschmolzen ist
-            if fehler_counter >= max_fehler:
-                print(f"\nGame Over! Der Schneemann ist geschmolzen. Das Wort war: {secret_word}")
-                break
-
-            # Eingabe vom Spieler holen
-            guess = input("\nGuess a letter: ").strip().lower()
-
-            # Validierung: Eingabe darf nicht leer sein und sollte nur 1 Buchstabe sein
-            if not guess or len(guess) != 1 or not guess.isalpha():
-                print("Ungültige Eingabe. Bitte gib genau einen Buchstaben ein.")
-                continue
-
-            # Prüfen, ob der Buchstabe im Wort ist
-            if guess in secret_word.lower():
-                print(f"Richtig! '{guess}' ist im Wort.")
-                # ALLE Vorkommen des Buchstabens aufdecken (KEIN break!)
-                for index, char in enumerate(secret_word.lower()):
-                    if char == guess:
-                        underscores[index] = secret_word[index]  # Behält Groß-/Kleinschreibung des Originals bei
-
-            else:
-                print(f"Falsch! '{guess}' ist nicht im Wort.")
-                fehler_counter += 1  # Schneemann schmilzt um eine Zeile
+    game_struct(secret_word, snowman_lines, max_fehler, fehler_counter, underscores)
 
 if __name__ == "__main__":
     play_game()
