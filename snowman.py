@@ -77,7 +77,13 @@ def play_game():
                 print("Ungültige Eingabe. Bitte gib genau einen Buchstaben ein.")
                 continue
 
-
+            # Prüfen, ob der Buchstabe im Wort ist
+            if guess in secret_word.lower():
+                print(f"Richtig! '{guess}' ist im Wort.")
+                # ALLE Vorkommen des Buchstabens aufdecken (KEIN break!)
+                for index, char in enumerate(secret_word.lower()):
+                    if char == guess:
+                        underscores[index] = secret_word[index]  # Behält Groß-/Kleinschreibung des Originals bei
 
 
 
