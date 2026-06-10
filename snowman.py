@@ -64,14 +64,10 @@ def play_game():
                 print("\nGlückwunsch! Du hast das Wort erraten und den Schneemann gerettet!")
                 break
 
-            max_length = len(lines_reduce)
-            # Eine while-Schleife statt 'for', um die Zeilen nacheinander zu drucken
-            while i < max_length - reduse_counter:
-                print(f"{data["snowman"][i]}")
-                i += 1
-            for index, char in enumerate(secret_word):
-                if char == guess:
-                    underscores[index] = guess
+            # Prüfen, ob der Schneemann komplett geschmolzen ist
+            if fehler_counter >= max_fehler:
+                print(f"\nGame Over! Der Schneemann ist geschmolzen. Das Wort war: {secret_word}")
+                break
 
             reduse_counter += 1
         else:
